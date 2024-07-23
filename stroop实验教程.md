@@ -8,38 +8,15 @@
 
 ## 步骤1：创建HTML文件
 打开您的文本编辑器。
-```html
-<!DOCTYPE html>
+```<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stroop Experiment</title>
-  <style>
-    /* CSS样式 */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    .word {
-      font-size: 48px;
-      margin: 10px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      user-select: none;
-    }
-  </style>
+  <!-- 链接外部CSS文件 -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
@@ -55,9 +32,33 @@
 </html>
 ```
 保存文件为stroop_experiment.html。
-步骤2：编写JavaScript代码
+步骤2：编写CSS文件，复制以下代码，新建文件style.css，粘贴代码。
+```
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.word {
+  font-size: 48px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  user-select: none;
+}
+```
+步骤3：编写JavaScript代码
 打开刚才保存的HTML文件。
-在<script>标签内，复制并粘贴以下JavaScript代码。
+在<script>标签内，复制并粘贴以下JavaScript代码。当然也可以另外写js文件。
 ```
 const colors = ['red', 'green', 'blue', 'yellow'];
 const words = ['red', 'green', 'blue', 'yellow'];
@@ -109,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
   generateStroopWord(initialIsConsistent);
 });
 ```
-步骤3：测试实验
+步骤4：测试实验
 双击stroop_experiment.html文件，它将在您的默认网页浏览器中打开。
 点击屏幕上的单词，当弹出提示框时，输入单词描述的颜色。
 检查您的回答是否正确，并观察实验如何继续。
 
-步骤4：理解代码
+步骤5：理解代码
 colors和words数组定义了实验中使用的颜色和单词。
 getRandomColor和getRandomWord函数用于生成随机颜色和单词。
 generateStroopWord函数用于在屏幕上显示Stroop单词。
