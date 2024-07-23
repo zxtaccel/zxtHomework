@@ -1,4 +1,4 @@
-简易JsPsych实验设计教程：Stroop实验
+教程：Stroop实验
 介绍
 本教程将指导您如何使用HTML和JavaScript创建一个简单的Stroop实验。Stroop实验是一种心理学实验，用于研究人们在面对颜色和文字信息冲突时的反应时间。
 
