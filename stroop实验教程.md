@@ -53,10 +53,12 @@
 </body>
 
 </html>
+```
 保存文件为stroop_experiment.html。
 步骤2：编写JavaScript代码
 打开刚才保存的HTML文件。
 在<script>标签内，复制并粘贴以下JavaScript代码。
+```
 const colors = ['red', 'green', 'blue', 'yellow'];
 const words = ['red', 'green', 'blue', 'yellow'];
 let correctResponses = 0;
@@ -106,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialIsConsistent = Math.random() < 0.5;
   generateStroopWord(initialIsConsistent);
 });
+```
 步骤3：测试实验
 双击stroop_experiment.html文件，它将在您的默认网页浏览器中打开。
 点击屏幕上的单词，当弹出提示框时，输入单词描述的颜色。
