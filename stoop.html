@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroop Experiment</title>
+  <!-- 链接外部CSS文件 -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="stroopWord" class="word" onclick="respond()"></div>
+  </div>
+
+  <script>
+    const colors = ['red', 'green', 'blue', 'yellow'];
+    const words = ['red', 'green', 'blue', 'yellow'];
+    let correctResponses = 0;
+    let totalTrials = 0;
+
+    function getRandomColor() {
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function getRandomWord(isConsistent) {
+      let word;
+      do {
+        word = words[Math.floor(Math.random() * words.length)];
+      } while (isConsistent && word !== colors.find(color => color === word));
+      return word;
+    }
+
+    function generateStroopWord(isConsistent) {
+      const color = getRandomColor();
+      const word = getRandomWord(isConsistent);
+      const wordElement = document.getElementById('stroopWord');
+      wordElement.style.color = color;
+      wordElement.textContent = word;
+    }
+
+    function respond() {
+      const userResponse = prompt('Please enter the color of the word as described (e.g., red):').toLowerCase();
+      const wordElement = document.getElementById('stroopWord');
+      const actualWord = wordElement.textContent.toLowerCase();
+
+      // 检查用户的回答是否与字体描述的颜色匹配
+      const isCorrect = userResponse === actualWord;
+
+      if (isCorrect) {
+        correctResponses++;
+        alert(`Correct! You've answered correctly ${correctResponses} times.`);
+      } else {
+        alert('Wrong, please try again!');
+      }
+
+      // 随机决定下一个试次是一致还是不一致
+      const nextIsConsistent = Math.random() < 0.5;
+      generateStroopWord(nextIsConsistent);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const initialIsConsistent = Math.random() < 0.5;
+      generateStroopWord(initialIsConsistent);
+    });
+  </script>
+</body>
+
+</html>
