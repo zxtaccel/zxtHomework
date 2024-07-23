@@ -1,14 +1,14 @@
-教程：Stroop实验
-介绍
+# Stroop实验教程
+
+## 介绍
 本教程将指导您如何使用HTML和JavaScript创建一个简单的Stroop实验。Stroop实验是一种心理学实验，用于研究人们在面对颜色和文字信息冲突时的反应时间。
 
-准备工作
+## 准备工作
 在开始之前，请确保您的计算机上安装了文本编辑器，如Notepad++或Visual Studio Code。
 
-步骤1：创建HTML文件
+## 步骤1：创建HTML文件
 打开您的文本编辑器。
-复制以下HTML代码，并粘贴到新的文本文件中。
-html
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +57,6 @@ html
 步骤2：编写JavaScript代码
 打开刚才保存的HTML文件。
 在<script>标签内，复制并粘贴以下JavaScript代码。
-javascript
 const colors = ['red', 'green', 'blue', 'yellow'];
 const words = ['red', 'green', 'blue', 'yellow'];
 let correctResponses = 0;
@@ -111,11 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
 双击stroop_experiment.html文件，它将在您的默认网页浏览器中打开。
 点击屏幕上的单词，当弹出提示框时，输入单词描述的颜色。
 检查您的回答是否正确，并观察实验如何继续。
+
 步骤4：理解代码
 colors和words数组定义了实验中使用的颜色和单词。
 getRandomColor和getRandomWord函数用于生成随机颜色和单词。
 generateStroopWord函数用于在屏幕上显示Stroop单词。
 respond函数处理用户的回答，并提供反馈。
 页面加载完成后，第一个Stroop单词将自动生成。
+
 结束语
 恭喜您！您已经成功创建了一个简单的Stroop实验。这个实验可以帮助您了解基本的网页编程和心理学实验设计。如果您想进一步学习JsPsych或其他更高级的实验设计工具，请访问它们的官方网站获取更多信息。
