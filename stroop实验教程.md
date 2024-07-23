@@ -6,35 +6,9 @@
 ## 准备工作
 在开始之前，请确保您的计算机上安装了文本编辑器，如Notepad++或Visual Studio Code。
 
-## 步骤1：创建HTML文件
-打开您的文本编辑器。
-```<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stroop Experiment</title>
-  <!-- 链接外部CSS文件 -->
-  <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-
-<body>
-  <div class="container">
-    <div id="stroopWord" class="word" onclick="respond()"></div>
-  </div>
-
-  <script>
-    // JavaScript代码将在这里编写
-  </script>
-</body>
-
-</html>
-```
-保存文件为stroop_experiment.html。
-步骤2：编写CSS文件，复制以下代码，新建文件style.css，粘贴代码。
-```
-body {
+## 步骤1：编写CSS文件。
+打开您的文本编辑器。复制以下代码
+```body {
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
@@ -56,59 +30,79 @@ body {
   user-select: none;
 }
 ```
-步骤3：编写JavaScript代码
-打开刚才保存的HTML文件。
-在<script>标签内，复制并粘贴以下JavaScript代码。当然也可以另外写js文件。
+保存文件为styles.css。
+步骤2：编写html文件，复制以下代码，新建文件stroop.html，粘贴代码。这里直接把函数写入script，无另建文件。
 ```
-const colors = ['red', 'green', 'blue', 'yellow'];
-const words = ['red', 'green', 'blue', 'yellow'];
-let correctResponses = 0;
-let totalTrials = 0;
+<!DOCTYPE html>
+<html lang="en">
 
-function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)];
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroop Experiment</title>
+  <!-- 链接外部CSS文件 -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 
-function getRandomWord(isConsistent) {
-  let word;
-  do {
-    word = words[Math.floor(Math.random() * words.length)];
-  } while (isConsistent && word !== colors.find(color => color === word));
-  return word;
-}
+<body>
+  <div class="container">
+    <div id="stroopWord" class="word" onclick="respond()"></div>
+  </div>
 
-function generateStroopWord(isConsistent) {
-  const color = getRandomColor();
-  const word = getRandomWord(isConsistent);
-  const wordElement = document.getElementById('stroopWord');
-  wordElement.style.color = color;
-  wordElement.textContent = word;
-}
+  <script>
+    const colors = ['red', 'green', 'blue', 'yellow'];
+    const words = ['red', 'green', 'blue', 'yellow'];
+    let correctResponses = 0;
+    let totalTrials = 0;
 
-function respond() {
-  const userResponse = prompt('Please enter the color of the word as described (e.g., red):').toLowerCase();
-  const wordElement = document.getElementById('stroopWord');
-  const actualWord = wordElement.textContent.toLowerCase();
+    function getRandomColor() {
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
 
-  // 检查用户的回答是否与字体描述的颜色匹配
-  const isCorrect = userResponse === actualWord;
+    function getRandomWord(isConsistent) {
+      let word;
+      do {
+        word = words[Math.floor(Math.random() * words.length)];
+      } while (isConsistent && word !== colors.find(color => color === word));
+      return word;
+    }
 
-  if (isCorrect) {
-    correctResponses++;
-    alert(`Correct! You've answered correctly ${correctResponses} times.`);
-  } else {
-    alert('Wrong, please try again!');
-  }
+    function generateStroopWord(isConsistent) {
+      const color = getRandomColor();
+      const word = getRandomWord(isConsistent);
+      const wordElement = document.getElementById('stroopWord');
+      wordElement.style.color = color;
+      wordElement.textContent = word;
+    }
 
-  // 随机决定下一个试次是一致还是不一致
-  const nextIsConsistent = Math.random() < 0.5;
-  generateStroopWord(nextIsConsistent);
-}
+    function respond() {
+      const userResponse = prompt('Please enter the color of the word as described (e.g., red):').toLowerCase();
+      const wordElement = document.getElementById('stroopWord');
+      const actualWord = wordElement.textContent.toLowerCase();
 
-document.addEventListener('DOMContentLoaded', () => {
-  const initialIsConsistent = Math.random() < 0.5;
-  generateStroopWord(initialIsConsistent);
-});
+      // 检查用户的回答是否与字体描述的颜色匹配
+      const isCorrect = userResponse === actualWord;
+
+      if (isCorrect) {
+        correctResponses++;
+        alert(`Correct! You've answered correctly ${correctResponses} times.`);
+      } else {
+        alert('Wrong, please try again!');
+      }
+
+      // 随机决定下一个试次是一致还是不一致
+      const nextIsConsistent = Math.random() < 0.5;
+      generateStroopWord(nextIsConsistent);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const initialIsConsistent = Math.random() < 0.5;
+      generateStroopWord(initialIsConsistent);
+    });
+  </script>
+</body>
+
+</html>
 ```
 步骤4：测试实验
 双击stroop_experiment.html文件，它将在您的默认网页浏览器中打开。
